@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Socios - Murga Infanto Juvenil</title>
+<style>
+    :root {
+        --verde-principal: #3cb371;
+        --verde-claro: #e6f4ea;
+        --verde-oscuro: #2e8b57;
+        --texto: #222;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--verde-claro);
+        margin: 0;
+        padding: 0;
+        color: var(--texto);
+    }
+    header {
+        background-color: var(--verde-principal);
+        text-align: center;
+        padding: 20px;
+    }
+    header img {
+        max-width: 150px;
+        height: auto;
+    }
+    header h1 {
+        margin-top: 10px;
+        font-size: 1.5em;
+        color: white;
+    }
+    .container {
+        max-width: 600px;
+        background: white;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        color: var(--verde-oscuro);
+        text-align: center;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+    input[type="text"], input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+    }
+    .checkbox-group {
+        margin-top: 10px;
+    }
+    .checkbox-group label {
+        font-weight: normal;
+        display: block;
+    }
+    button {
+        margin-top: 20px;
+        width: 100%;
+        background-color: var(--verde-oscuro);
+        color: white;
+        padding: 15px;
+        font-size: 1em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: var(--verde-principal);
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: var(--verde-principal);
+        margin-top: 20px;
+        color: white;
+    }
+    footer a {
+        color: white;
+        margin: 0 5px;
+        text-decoration: none;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="aceitera.png" alt="Logo La Vieja Aceitera">
+    <h1>Murga Infanto Juvenil Amigachitos Asociación Civil</h1>
+</header>
+
+<div class="container">
+    <h2>Ficha de inscripción de socio</h2>
+    <form id="socioForm">
+        <label>Fecha de alta</label>
+        <input type="date" name="fecha_alta" required>
+
+        <label>Nombre y Apellido:</label>
+        <input type="text" name="nombre_apellido" required>
+
+        <label>Domicilio:</label>
+        <input type="text" name="domicilio" required>
+
+        <label>Nacionalidad:</label>
+        <input type="text" name="nacionalidad" required>
+
+        <label>DNI:</label>
+        <input type="text" name="dni" inputmode="numeric" pattern="\d*" required>
+
+        <label>Tipo de Socio:</label>
+        <div class="checkbox-group">
+            <label><input type="radio" name="tipo_socio" value="Activo"> Socio Activo</label>
+            <label><input type="radio" name="tipo_socio" value="Benefactor"> Socio Benefactor</label>
+        </div>
+
+        <label>Modalidad:</label>
+        <div class="checkbox-group">
+            <label><input type="radio" name="modalidad" value="Individual"> Individual</label>
+            <label><input type="radio" name="modalidad" value="Grupo Familiar"> Grupo Familiar</label>
+        </div>
+
+        <label>Plan de pago:</label>
+        <div class="checkbox-group">
+            <label><input type="radio" name="plan_pago" value="Mensual $2000"> Mensual $2000</label>
+            <label><input type="radio" name="plan_pago" value="Anual $15000"> Anual $15000</label>
+        </div>
+
+        <label>Formas de pago:</label>
+        <div class="checkbox-group">
+            <label><input type="radio" name="forma_pago" value="Transferencia"> Transferencia</label>
+            <label><input type="radio" name="forma_pago" value="Efectivo"> Efectivo</label>
+        </div>
+
+        <label>Me vinculo con el espacio porque:</label>
+        <div class="checkbox-group">
+            <label><input type="radio" name="vinculo" value="Mi hijo participa"> Mi hijo participa</label>
+            <label><input type="radio" name="vinculo" value="Yo participo"> Yo participo</label>
+            <label><input type="radio" name="vinculo" value="Soy voluntario"> Soy voluntario</label>
+        </div>
+        <div><p><strong>MURGA INFANTO JUVENIL AMIGACHITOS ASOCIACION CIVIL
+            </strong></P></div>
+<div><p><strong>
+CVU: 0000003100019766855687
+Alias: amigachitos
+CUIT/CUIL: 30718958357
+</strong></p></div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<footer>
+    <p>Seguinos en:</p>
+    <a href="https://www.facebook.com/AmigachitosMurgaInfantil">Facebook</a> | 
+    <a href="https://www.instagram.com/amigachitos1/">Instagram</a> | 
+    <a href="https://wa.me/5493435069213">WhatsApp</a>
+</footer>
+
+<script>
+document.getElementById("socioForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    function getCheckedValues(name) {
+        return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+                    .map(el => el.value)
+                    .join(", ");
+    }
+
+    let datos = {
+        "fecha_alta": e.target["fecha_alta"].value,
+        "nombre_apellido": e.target["nombre_apellido"].value,
+        "domicilio": e.target["domicilio"].value,
+        "nacionalidad": e.target["nacionalidad"].value,
+        "dni": e.target["dni"].value,
+        "tipo_socio": getCheckedValues("tipo_socio"),
+        "modalidad": getCheckedValues("modalidad"),
+        "plan_pago": getCheckedValues("plan_pago"),
+        "forma_pago": getCheckedValues("forma_pago"),
+        "vinculo": getCheckedValues("vinculo")
+    };
+
+    fetch("https://sheetdb.io/api/v1/s4qj021go0h4a", {  // ⚠️ poné acá tu URL real
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: [datos] })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert("Enviado con éxito ✔");
+        e.target.reset();
+    })
+    .catch(err => {
+        alert("Error al enviar ❌");
+        console.error(err);
+    });
+});
+</script>
+
+</body>
+</html>
