@@ -110,6 +110,8 @@
 <header>
     <img src="aceitera.png" alt="Logo La Vieja Aceitera">
     <h1>Murga Infanto Juvenil Amigachitos Asociación Civil</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </header>
 
 <div class="container">
@@ -176,9 +178,25 @@ CUIT/CUIL: 30718958357
 
 <footer>
     <p>Seguinos en:</p>
-    <a href="https://www.facebook.com/AmigachitosMurgaInfantil">Facebook</a> | 
-    <a href="https://www.instagram.com/amigachitos1/">Instagram</a> | 
-    <a href="https://wa.me/5493435069213">WhatsApp</a>
+    <a href="https://www.facebook.com/AmigachitosMurgaInfantil" target="_blank" title="Facebook">
+  <img src="facebook.png" alt="Facebook" class="icono" width="30" height="30">
+</a>
+<a href="https://www.instagram.com/amigachitos1/" target="_blank" title="Instagram">
+  <img src="instagram.png" alt="Instagram" class="icono" width="30" height="30">
+</a>
+<a href="https://wa.me/5493435069213" target="_blank" title="WhatsApp">
+  <img src="whatsapp.png" alt="WhatsApp" class="icono" width="30" height="30">
+</a>
+
+<style>
+.icono {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.icono:hover {
+  transform: scale(1.5); /* Agranda el icono un 50% */
+}
+</style>
 </footer>
 
 <script>
