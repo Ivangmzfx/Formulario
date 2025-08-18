@@ -123,7 +123,9 @@
         <label>Tipo de Socio:</label>
         <div class="checkbox-group">
             <label><input type="radio" name="tipo_socio" value="Activo"> Socio Activo</label>
+            <p>Todo aquel que pague una cuota mensual o anual.</p>
             <label><input type="radio" name="tipo_socio" value="Benefactor"> Socio Benefactor</label>
+            <p>Todo aquel que contribuye al sostenimiento de la Asociacion, en mas de una ocasion, con cualquier tipo de aporte.</p>
         </div>
 
         <label>Modalidad:</label>
@@ -192,7 +194,7 @@ document.getElementById("socioForm").addEventListener("submit", function(e){
         "vinculo": getCheckedValues("vinculo")
     };
 
-    fetch("https://sheetdb.io/api/v1/s4qj021go0h4a", {  // ⚠️ poné acá tu URL real
+    fetch("https://sheetdb.io/api/v1/s4qj021go0h4a", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: [datos] })
