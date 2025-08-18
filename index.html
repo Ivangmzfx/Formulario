@@ -51,29 +51,39 @@
         display: block;
         margin-top: 10px;
     }
-    input[type="text"], 
-    input[type="date"], 
-    input[type="radio"], 
-    input[type="checkbox"] {
-    width: 100%;          /* deja un margen adentro */
-    max-width: 600px;    /* nunca se va a estirar más que esto */
+/* Solo inputs de texto y fechas */
+input[type="text"], 
+input[type="date"] {
+    width: 100%;
+    max-width: 600px;
     padding: 8px;
     margin-top: 5px;
-    margin-left: auto;   /* centra */
-    margin-right: auto;  /* centra */
-    display: block;      /* para que respeten el centrado */
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 1em;
 }
 
-    .checkbox-group {
-        margin-top: 10px;
-    }
-    .checkbox-group label {
-        font-weight: normal;
-        display: block;
-    }
+/* Radios y checkboxes más prolijos */
+input[type="radio"], 
+input[type="checkbox"] {
+    width: auto;        /* no se estiran */
+    margin-right: 8px;  /* espacio entre circulito y texto */
+}
+
+input[type="radio"],
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;          /* espacio entre el circulito y el texto */
+  margin: 5px 0;
+}
+
+.detalle {
+  margin-left: 25px; /* indenta la descripción */
+  font-size: 0.9em;
+  color: #555;
+}
+
     button {
         margin-top: 20px;
         width: 100%;
