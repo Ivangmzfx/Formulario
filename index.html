@@ -150,7 +150,7 @@ input[type="radio"],
         <input type="text" name="dni" inputmode="numeric" pattern="\d*" required>
 
         <label>Tipo de Socio:</label>
-        <div class="checkbox-group">
+        <div class="checkbox-group" required>
             <label><input type="radio" name="tipo_socio" value="Activo"> Socio Activo</label>
             <p>Todo aquel que pague una cuota mensual o anual.</p>
             <label><input type="radio" name="tipo_socio" value="Benefactor"> Socio Benefactor</label>
@@ -158,25 +158,25 @@ input[type="radio"],
         </div>
 
         <label>Modalidad:</label>
-        <div class="checkbox-group">
+        <div class="checkbox-group" required>
             <label><input type="radio" name="modalidad" value="Individual"> Individual</label>
             <label><input type="radio" name="modalidad" value="Grupo Familiar"> Grupo Familiar</label>
         </div>
 
         <label>Plan de pago:</label>
-        <div class="checkbox-group">
+        <div class="checkbox-group" required>
             <label><input type="radio" name="plan_pago" value="Mensual $2000"> Mensual $2000</label>
             <label><input type="radio" name="plan_pago" value="Anual $15000"> Anual $15000</label>
         </div>
 
         <label>Formas de pago:</label>
-        <div class="checkbox-group">
+        <div class="checkbox-group" required>
             <label><input type="radio" name="forma_pago" value="Transferencia"> Transferencia</label>
             <label><input type="radio" name="forma_pago" value="Efectivo"> Efectivo</label>
         </div>
 
         <label>Me vinculo con el espacio porque:</label>
-        <div class="checkbox-group">
+        <div class="checkbox-group" required>
             <label><input type="radio" name="vinculo" value="Mi hijo participa"> Mi hijo participa</label>
             <label><input type="radio" name="vinculo" value="Yo participo"> Yo participo</label>
             <label><input type="radio" name="vinculo" value="Soy voluntario"> Soy voluntario</label>
@@ -255,10 +255,6 @@ document.getElementById("socioForm").addEventListener("submit", function(e){
     });
 });
 </script>
-
 </body>
-
 </html>
-
-
 
