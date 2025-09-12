@@ -5,99 +5,216 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulario de Socios - Murga Infanto Juvenil</title>
 <style>
-    :root {
-        --verde-principal: #3cb371;
-        --verde-claro: #e6f4ea;
-        --verde-oscuro: #2e8b57;
-        --texto: #000;
+:root {
+    --verde-principal: #3CB371;
+    --comodin: #003332;
+    --degradado--claro: #BDCDCF;
+    --degradado--oscuro: #034c36;
+    --texto: #000;
+    --botones: #9b9b9b;
+    --fondo: #e6f4ea;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --detalles: #b8850b;
     }
     body {
         font-family: Arial, sans-serif;
-        background:url(background.png) no-repeat center center fixed;
+        background:linear-gradient(var(--degradado--claro), var(--degradado--oscuro));
         background-size:cover;
         margin: 0;
         padding: 0;
         color: var(--texto);
     }
     header {
-        background-color:rgb(46, 139, 89, 0.6);
+        background: transparent;
         text-align: center;
         padding: 20px;
+    }
+    nav.murga {
+        color: var(--blanco);
+        font-size: 1.2em;
+        padding: 0px 15px;
+        font-weight: bold;
+        text-align: center;
+        border: var(--negro) 5px;
+        justify-content: space-between;
     }
     header img {
         max-width: 300px;
         height: auto;
     }
+    header img:hover {
+        transform: scale(1.05);
+        transition: ease-in 0.3s;
+    }
     header h1 {
         margin-top: 10px;
         font-size: 1.5em;
-        color: white;
+        color: var(--blanco);
     }
     .container {
-    max-width: 600px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    margin: 20px auto;
-    padding: 20px;
-}
+        max-width: 600px;
+        background: var(--blanco) opacity(0.5);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        margin: 20px auto;
+        padding: 30px;
+    }
 
-    h2 {
-        color: var(--verde-oscuro);
+    strong {
+        color: var(--texto);
         text-align: center;
     }
+    h3{
+        color: var(--blanco);
+        text-decoration: underline;
+        text-align: center;
+    }
+    h2 {
+        color: var(--blanco);
+        text-decoration: underline;
+        font-style: italic;
+        text-shadow: 0px 10px 20px var(--negro);
+        margin: 0;
+        font-size: 15px;
+    }
+
     label {
         font-weight: bold;
         display: block;
-        margin-top: 10px;
+        margin-top: 15px;
     }
-/* Solo inputs de texto y fechas */
-input[type="text"], 
-input[type="date"] {
-    width: 100%;
-    max-width: 600px;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-}
+    
+    .required::after {
+        content: " *";
+        color: red;
+        font-weight: bold;
+    }
+    
+    /* Solo inputs de texto y fechas */
+    input[type="text"], 
+    input[type="date"] {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 2px solid #ccc;
+        font-size: 1em;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="date"]:focus {
+        border-color: var(--negro);
+        outline: none;
+    }
+    
+    /* Error styling */
+    input.error {
+        border-color: #e74c3c;
+        background-color: #fdf2f2;
+    }
 
-/* Radios y checkboxes más prolijos */
-input[type="radio"], 
-input[type="checkbox"] {
-    width: auto;        /* no se estiran */
-    margin-right: 8px;  /* espacio entre circulito y texto */
-}
+    /* Radios y checkboxes más prolijos */
+    input[type="radio"], 
+    input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+        transform: scale(1.2);
+    }
 
-input[type="radio"],
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  gap: 10px;          /* espacio entre el circulito y el texto */
-  margin: 5px 0;
-}
+    .radio-group {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #fafafa;
+    }
+    
+    .radio-group.error {
+        border-color: #e74c3c;
+        background-color: #fdf2f2;
+    }
 
-.detalle {
-  margin-left: 25px; /* indenta la descripción */
-  font-size: 0.9em;
-  color: #555;
-}
+    .radio-group label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 8px 0;
+        font-weight: normal;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+    
+    .radio-group label:hover {
+        background-color: rgba(60, 179, 113, 0.1);
+    }
+
+    .detalle {
+        margin-left: 0;
+        font-size: 0.9em;
+        color: #666;
+        font-style: italic;
+        line-height: 1.3;
+        margin-top: 2px;
+    }
+
+    .error-message {
+        color: #e74c3c;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+    }
 
     button {
-        margin-top: 20px;
+        margin-top: 25px;
         width: 100%;
-        background-color: var(--verde-oscuro);
-        color: white;
+        background: var(--botones);
+        border-radius: 10px;
+        border: var(--negro) 5px double;
+        color: var(--blanco);
         padding: 15px;
-        font-size: 1em;
-        border: none;
-        border-radius: 4px;
+        font-size: 1.1em;
+        font-weight: bold;
         cursor: pointer;
+        transition: background-color 0.3s, transform 0.1s;
     }
+
     button:hover {
-        background-color: var(--verde-principal);
+        transform: scale(1.07);
+        background: var(--botones);
+        color: var(--blanco);
+        border-radius: 50px;
+        transition: ease 0.3s;
     }
+    
+    button:active {
+        transform: translateY(0);
+    }
+    
+    button:disabled {
+        background-color: var(--botones);
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .info-pago {
+        background-color: var(--verde-claro);
+        padding: 15px;
+        border-radius: 20px;
+        margin: 20px 0;
+    }
+
+    .info-pago p {
+        margin: 5px 0;
+        font-size: 0.95em;
+    }
+    
     footer {
         text-align: center;
         padding: 15px;
@@ -105,125 +222,212 @@ input[type="radio"],
         margin-top: 20px;
         color: white;
     }
+    
     footer a {
         color: white;
         margin: 0 5px;
         text-decoration: none;
     }
+    
     footer a:hover {
-        text-decoration: underline;
+        text-decoration: none;
     }
-    <!-- Open Graph para vista previa en WhatsApp / Facebook -->
+    
+    .icono {
+        transition: transform 0.3s ease;
+        transition: rotate 0.3s ease;
+    }
+    
+    .icono:hover {
+        transform: scale(1.3);
+        rotate: 10deg;
+    }
+    /* Loading spinner */
+    .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid var(--verde-principal);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+</style>
+<!-- Open Graph para vista previa en WhatsApp / Facebook -->
 <meta property="og:title" content="Formulario de Socios - Murga Infanto Juvenil Amigachitos">
 <meta property="og:description" content="Completá el formulario y sumate como socio de nuestra asociación civil.">
 <meta property="og:image" content="https://ivangmzfx.github.io/Formulario/aceitera.png">
-<meta property="og:image" content="https://ivangmzfx.github.io/Formulario/aaceitera.png">
 <meta property="og:url" content="https://ivangmzfx.github.io/Formulario/">
 <meta property="og:type" content="website">
-</style>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
 <header>
-    <img src="aceitera.png" alt="Logo La Vieja Aceitera">
-    <h1>Murga Infanto Juvenil Amigachitos Asociación Civil</h1>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <div class="logo"><img src="aceitera.png" alt="Logo La Vieja Aceitera"></div>
 </header>
-
+<nav class="murga">Murga Infanto Juvenil Amigachitos Asociación Civil</nav>
 <div class="container">
-    <h2>Ficha de inscripción de socio</h2>
     <form id="socioForm">
-        <label>Fecha de alta</label>
+        <label class="required">Fecha de alta</label>
         <input type="date" name="fecha_alta" required>
+        <div class="error-message" id="error_fecha_alta">Por favor selecciona una fecha</div>
 
-        <label>Nombre y Apellido:</label>
-        <input type="text" name="nombre_apellido" required>
+        <label class="required">Nombre y Apellido:</label>
+        <input type="text" name="nombre_apellido" required placeholder="Ingresa tu nombre completo">
+        <div class="error-message" id="error_nombre_apellido">Este campo es obligatorio</div>
 
-        <label>Domicilio:</label>
-        <input type="text" name="domicilio" required>
+        <label class="required">Domicilio:</label>
+        <input type="text" name="domicilio" required placeholder="Calle, número, ciudad">
+        <div class="error-message" id="error_domicilio">Este campo es obligatorio</div>
 
-        <label>Nacionalidad:</label>
-        <input type="text" name="nacionalidad" required>
+        <label class="required">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" required placeholder="Ej: Argentina" value="Argentina">
+        <div class="error-message" id="error_nacionalidad">Este campo es obligatorio</div>
 
-        <label>DNI:</label>
-        <input type="text" name="dni" inputmode="numeric" pattern="\d*" required>
+        <label class="required">DNI:</label>
+        <input type="text" name="dni" inputmode="numeric" pattern="\d*" required placeholder="Solo números, sin puntos">
+        <div class="error-message" id="error_dni">Ingresa un DNI válido (solo números)</div>
 
-        <label>Tipo de Socio:</label>
-        <div class="checkbox-group" required>
-            <label><input type="radio" name="tipo_socio" value="Activo"> Socio Activo</label>
-            <p>Todo aquel que pague una cuota mensual o anual.</p>
-            <label><input type="radio" name="tipo_socio" value="Benefactor"> Socio Benefactor</label>
-            <p>Todo aquel que contribuye al sostenimiento de la Asociacion, en mas de una ocasion, con cualquier tipo de aporte.</p>
+        <label class="required">Tipo de Socio:</label>
+        <div class="radio-group" id="grupo_tipo_socio">
+            <label>
+                <div>
+                    <input type="radio" name="tipo_socio" value="Activo">
+                    <strong>Socio Activo</strong>
+                    <div class="detalle">Todo aquel que pague una cuota mensual o anual.</div>
+                </div>
+            </label>
+            <label>
+                <div>
+                    <input type="radio" name="tipo_socio" value="Benefactor">
+                    <strong>Socio Benefactor</strong>
+                    <div class="detalle">Todo aquel que contribuye al sostenimiento de la Asociación, en más de una ocasión, con cualquier tipo de aporte.</div>
+                </div>
+            </label>
+        </div>
+        <div class="error-message" id="error_tipo_socio">Debes seleccionar un tipo de socio</div>
+
+        <label class="required">Modalidad:</label>
+        <div class="radio-group" id="grupo_modalidad">
+            <label>
+                <input type="radio" name="modalidad" value="Individual"> Individual
+            </label>
+            <label>
+                <input type="radio" name="modalidad" value="Grupo Familiar"> Grupo Familiar
+            </label>
+        </div>
+        <div class="error-message" id="error_modalidad">Debes seleccionar una modalidad</div>
+
+        <label class="required">Plan de pago:</label>
+        <div class="radio-group" id="grupo_plan_pago">
+            <label>
+                <input type="radio" name="plan_pago" value="Mensual $2000"> Mensual $2000
+            </label>
+            <label>
+                <input type="radio" name="plan_pago" value="Anual $15000"> Anual $15000
+            </label>
+        </div>
+        <div class="error-message" id="error_plan_pago">Debes seleccionar un plan de pago</div>
+
+        <label class="required">Formas de pago:</label>
+        <div class="radio-group" id="grupo_forma_pago">
+            <label>
+                <input type="radio" name="forma_pago" value="Transferencia"> Transferencia
+            </label>
+            <label>
+                <input type="radio" name="forma_pago" value="Efectivo"> Efectivo
+            </label>
+        </div>
+        <div class="error-message" id="error_forma_pago">Debes seleccionar una forma de pago</div>
+
+        <label class="required">Me vinculo con el espacio porque:</label>
+        <div class="radio-group" id="grupo_vinculo">
+            <label>
+                <input type="radio" name="vinculo" value="Mi hijo participa"> Mi hijo participa
+            </label>
+            <label>
+                <input type="radio" name="vinculo" value="Yo participo"> Yo participo
+            </label>
+            <label>
+                <input type="radio" name="vinculo" value="Soy voluntario"> Soy voluntario
+            </label>
+        </div>
+        <div class="error-message" id="error_vinculo">Debes indicar tu vínculo con el espacio</div>
+
+        <div class="info-pago">
+            <p><h3>MURGA INFANTO JUVENIL AMIGACHITOS ASOCIACIÓN CIVIL</h3></p>
+            <p><h2>CVU: 0000003100019766855687</h2></p>
+            <p><h2>Alias: amigachitos</h2></p>
+            <p><h2>CUIT/CUIL: 30718958357</h2></p>
         </div>
 
-        <label>Modalidad:</label>
-        <div class="checkbox-group" required>
-            <label><input type="radio" name="modalidad" value="Individual"> Individual</label>
-            <label><input type="radio" name="modalidad" value="Grupo Familiar"> Grupo Familiar</label>
-        </div>
-
-        <label>Plan de pago:</label>
-        <div class="checkbox-group" required>
-            <label><input type="radio" name="plan_pago" value="Mensual $2000"> Mensual $2000</label>
-            <label><input type="radio" name="plan_pago" value="Anual $15000"> Anual $15000</label>
-        </div>
-
-        <label>Formas de pago:</label>
-        <div class="checkbox-group" required>
-            <label><input type="radio" name="forma_pago" value="Transferencia"> Transferencia</label>
-            <label><input type="radio" name="forma_pago" value="Efectivo"> Efectivo</label>
-        </div>
-
-        <label>Me vinculo con el espacio porque:</label>
-        <div class="checkbox-group" required>
-            <label><input type="radio" name="vinculo" value="Mi hijo participa"> Mi hijo participa</label>
-            <label><input type="radio" name="vinculo" value="Yo participo"> Yo participo</label>
-            <label><input type="radio" name="vinculo" value="Soy voluntario"> Soy voluntario</label>
-        </div>
-        <div><p><strong>MURGA INFANTO JUVENIL AMIGACHITOS ASOCIACION CIVIL
-            </strong></P></div>
-<div><p><strong>
-CVU: 0000003100019766855687
-Alias: amigachitos
-CUIT/CUIL: 30718958357
-</strong></p></div>
-
-        <button type="submit">Enviar</button>
+        <button type="submit" id="submitBtn">
+            <span id="btnText">Enviar Formulario</span>
+            <span id="btnSpinner" class="spinner hidden"></span>
+        </button>
     </form>
 </div>
 
 <footer>
     <p>Seguinos en:</p>
     <a href="https://www.facebook.com/AmigachitosMurgaInfantil" target="_blank" title="Facebook">
-  <img src="facebook.png" alt="Facebook" class="icono" width="30" height="30">
-</a>
-<a href="https://www.instagram.com/amigachitos1/" target="_blank" title="Instagram">
-  <img src="instagram.png" alt="Instagram" class="icono" width="30" height="30">
-</a>
-<a href="https://wa.me/+5493435001749" target="_blank" title="WhatsApp">
-  <img src="whatsapp.png" alt="WhatsApp" class="icono" width="30" height="30">
-</a>
-
-<style>
-.icono {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-.icono:hover {
-  transform: scale(1.5); /* Agranda el icono un 50% */
-}
-</style>
+        <img src="facebook.png" alt="Facebook" class="icono" width="30" height="auto">
+    </a>
+    <a href="https://www.instagram.com/amigachitos1/" target="_blank" title="Instagram">
+        <img src="instagram.png" alt="Instagram" class="icono" width="30" height="auto">
+    </a>
+    <a href="https://wa.me/+5493435001749" target="_blank" title="WhatsApp">
+        <img src="whatsapp.png" alt="WhatsApp" class="icono" width="30" height="auto">
+    </a>
 </footer>
 
 <script>
+// Inicializar EmailJS
+emailjs.init("6lW3IDmsjaMnaLMJX"); // Reemplazar con tu Public Key
+
 document.getElementById("socioForm").addEventListener("submit", function(e){
     e.preventDefault();
+    
+    // Resetear errores previos
+    clearErrors();
+    
+    // Validar todos los campos
+    let isValid = validateForm();
+    
+    if (!isValid) {
+        // Hacer scroll al primer error
+        const firstError = document.querySelector('.error-message:not(.hidden)');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+    }
+    
+    // Mostrar loading
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando...';
+    btnSpinner.classList.remove('hidden');
 
     function getCheckedValues(name) {
-        return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
-                    .map(el => el.value)
-                    .join(", ");
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        return checked ? checked.value : "";
     }
 
     let datos = {
@@ -239,22 +443,160 @@ document.getElementById("socioForm").addEventListener("submit", function(e){
         "vinculo": getCheckedValues("vinculo")
     };
 
-    fetch("https://sheetdb.io/api/v1/s4qj021go0h4a", { 
+    // Enviar a SheetDB (mantener funcionalidad original)
+    const sheetDBPromise = fetch("https://sheetdb.io/api/v1/s4qj021go0h4a", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: [datos] })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert("Enviado con éxito ✔");
+    });
+
+    // Enviar notificación por email
+    const emailPromise = emailjs.send("Amigachitos", "template_5rfg6sc", {
+        to_email: "mariagaramirez20011@gmail.com",
+        subject: "🎭 Nuevo Socio - Murga Amigachitos",
+        nombre_completo: datos.nombre_apellido,
+        fecha_alta: datos.fecha_alta,
+        domicilio: datos.domicilio,
+        dni: datos.dni,
+        tipo_socio: datos.tipo_socio,
+        modalidad: datos.modalidad,
+        plan_pago: datos.plan_pago,
+        forma_pago: datos.forma_pago,
+        vinculo: datos.vinculo,
+        nacionalidad: datos.nacionalidad
+    });
+
+    // Ejecutar ambas operaciones en paralelo
+    Promise.all([sheetDBPromise, emailPromise])
+    .then(([sheetResponse, emailResponse]) => {
+        // Verificar respuesta de SheetDB
+        if (!sheetResponse.ok) {
+            throw new Error(`SheetDB error! status: ${sheetResponse.status}`);
+        }
+        
+        alert("¡Formulario enviado con éxito! ✅\n\nTe confirmamos que tu solicitud de socio ha sido recibida correctamente.\n\n¡Bienvenido/a a la familia Amigachitos! 🎭");
         e.target.reset();
     })
     .catch(err => {
-        alert("Error al enviar ❌");
-        console.error(err);
+        console.error('Error:', err);
+        alert("Error al enviar el formulario ❌\n\nPor favor, revisa tu conexión a internet e intenta nuevamente.\n\nSi el problema persiste, contactanos por WhatsApp.");
+    })
+    .finally(() => {
+        // Restaurar botón
+        submitBtn.disabled = false;
+        btnText.textContent = 'Enviar Formulario';
+        btnSpinner.classList.add('hidden');
     });
+});
+
+function validateForm() {
+    let isValid = true;
+    
+    // Validar campos de texto
+    const requiredFields = ['fecha_alta', 'nombre_apellido', 'domicilio', 'nacionalidad', 'dni'];
+    requiredFields.forEach(field => {
+        const input = document.querySelector(`input[name="${field}"]`);
+        if (!input.value.trim()) {
+            showError(field, input);
+            isValid = false;
+        } else if (field === 'dni' && !/^\d{7,8}$/.test(input.value.trim())) {
+            showError(field, input, 'El DNI debe tener 7 u 8 dígitos');
+            isValid = false;
+        }
+    });
+    
+    // Validar radio buttons
+    const radioGroups = ['tipo_socio', 'modalidad', 'plan_pago', 'forma_pago', 'vinculo'];
+    radioGroups.forEach(group => {
+        const checked = document.querySelector(`input[name="${group}"]:checked`);
+        if (!checked) {
+            showRadioError(group);
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+function showError(field, input, customMessage = null) {
+    const errorDiv = document.getElementById(`error_${field}`);
+    const group = document.getElementById(`grupo_${field}`);
+    
+    if (input) {
+        input.classList.add('error');
+    }
+    
+    if (group) {
+        group.classList.add('error');
+    }
+    
+    if (errorDiv) {
+        if (customMessage) {
+            errorDiv.textContent = customMessage;
+        }
+        errorDiv.style.display = 'block';
+        errorDiv.classList.remove('hidden');
+    }
+}
+
+function showRadioError(group) {
+    const errorDiv = document.getElementById(`error_${group}`);
+    const groupDiv = document.getElementById(`grupo_${group}`);
+    
+    if (groupDiv) {
+        groupDiv.classList.add('error');
+    }
+    
+    if (errorDiv) {
+        errorDiv.style.display = 'block';
+        errorDiv.classList.remove('hidden');
+    }
+}
+
+function clearErrors() {
+    // Limpiar errores de inputs
+    document.querySelectorAll('input.error').forEach(input => {
+        input.classList.remove('error');
+    });
+    
+    // Limpiar errores de grupos
+    document.querySelectorAll('.radio-group.error').forEach(group => {
+        group.classList.remove('error');
+    });
+    
+    // Ocultar mensajes de error
+    document.querySelectorAll('.error-message').forEach(error => {
+        error.style.display = 'none';
+        error.classList.add('hidden');
+    });
+}
+
+// Limpiar errores mientras el usuario escribe/selecciona
+document.addEventListener('input', function(e) {
+    if (e.target.classList.contains('error')) {
+        e.target.classList.remove('error');
+        const field = e.target.name;
+        const errorDiv = document.getElementById(`error_${field}`);
+        if (errorDiv) {
+            errorDiv.style.display = 'none';
+        }
+    }
+});
+
+document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+        const group = e.target.name;
+        const groupDiv = document.getElementById(`grupo_${group}`);
+        const errorDiv = document.getElementById(`error_${group}`);
+        
+        if (groupDiv) {
+            groupDiv.classList.remove('error');
+        }
+        if (errorDiv) {
+            errorDiv.style.display = 'none';
+        }
+    }
 });
 </script>
 </body>
 </html>
-
